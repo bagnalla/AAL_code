@@ -1,0 +1,3 @@
+PKG core batteries ppx_sexp_conv async cohttp js_of_ocaml
+
+B ./_build

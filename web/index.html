@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Array Animation Language</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      #editor {
+      position: relative !important;
+      top: 0;
+      border: 1px solid lightgray;
+      margin-top: 0px;
+      height: 420px;
+      width: 545px;
+      z-index: 1;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      border-bottom: groove;
+      }
+
+      #undereditor {
+      margin-top: 4px;
+      margin-left: 4px;
+      }
+
+      #status {
+      position: relative;
+      top: 0;
+      height: 20px;
+      width: 600px;
+      margin-top: 5px;
+      text-align: center;
+      font-weight: bold;
+      }
+
+      #canvas {
+      z-index: 2;
+      }
+
+      .myButton {
+      position: relative;
+      z-index: 3;
+      }
+
+      #stepinterval {
+      font-size: 10px;
+      }
+
+      .lineMarker {
+      position: absolute;
+      background: rgba(100,200,100,0.5);
+      z-index: 20
+      }
+
+      h2 {
+      text-align: center;
+      }
+
+      #feedback {
+      margin: auto;
+      margin-top: 10px;
+      font-size: 12px;
+      }
+      
+      #content {
+      width: 100%;
+      text-align: left;
+      margin: auto;
+      }
+      
+      footer {
+      margin-top: 10px;
+      bottom: 0px;
+      text-align: center;
+      }
+
+      table {
+      border: ridge;
+      border-width: 1px;
+      }
+
+      td {
+      vertical-align: top;
+      border: groove;
+      border-width: 1px;
+      }
+
+      .plusminusbutton {
+      width: 20px;
+      margin-left: 1px;
+      margin-right: 1px;
+      }
+
+      .noborder {
+      border: none;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+  </head>
+  <body>
+    <div id="content" class="container">
+      <h2>Array Animation Language</h2>
+      
+      <div align="center">
+	<table class="noborder"><tr class="noborder"><td class="noborder">
+	      <button type="button" id="editorplusbutton"
+		      class="btn btn-xs plusminusbutton">+</button>
+	      <br>
+	      <button type="button" id="editorminusbutton"
+		      class="btn btn-xs plusminusbutton">-</button>
+	      </td><td class="noborder">
+	      <table id="maintable" border="1">
+		<tr>
+		  <td>
+	    <pre id="editor"></pre>
+	    <div id="undereditor">
+	      <button type="button" id="gobutton"
+		      class="btn btn-primary myButton">Go</button>
+	      <button type="button" id="cancelbutton"
+		      class="btn btn-danger myButton"><u>C</u>ancel</button>
+	      <button type="button" id="editbutton"
+		      class="btn btn-default myButton"><u>E</u>dit</button>
+	      <button type="button" id="playbutton"
+		      class="btn btn-primary myButton"><u>P</u>lay</button>
+	      <button type="button" id="stopbutton"
+		      class="btn btn-danger myButton"><u>S</u>top</button>
+	      <button type="button" id="slowerbutton"
+		      class="btn btn-default myButton">Slo<u>w</u>er</button>
+	      <button type="button" id="fasterbutton"
+		      class="btn btn-default myButton"><u>F</u>aster</button>
+	      <button type="button" id="backbutton"
+		      class="btn btn-default myButton"><u>B</u>ack</button>
+	      <button type="button" id="stepbutton"
+		      class="btn btn-default myButton"><u>S</u>tep</button>
+	      <button type="button" id="resetbutton"
+		      class="btn btn-default myButton"><u>R</u>eset</button>
+	      <div id="stepinterval" class="myButton"></div>
+	      <div id="feedback"></div>
+	    </div>
+	  </td>
+		  <td></td>
+	  <td>
+	    <div id="status"></div>
+	    <canvas id="canvas" width="600" height="525"></canvas>
+	  </td>
+	</tr>
+      </table>
+	    </td><td class="noborder">
+	      <button type="button" id="canvasplusbutton"
+		      class="btn btn-xs plusminusbutton">+</button>
+	      <br>
+	      <button type="button" id="canvasminusbutton"
+		      class="btn btn-xs plusminusbutton">-</button>
+	</td></tr></table>
+      </div>
+      
+      <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+      <script src="scripts/aaljs.js"></script>
+      <script src="scripts/bundle.js"></script>
+
+      <footer>
+	<em>
+	  <a href="about.html">About AAL</a>
+	  - <a href="examples.html">Example programs</a>
+	  - <a href="mailto:ab667712@ohio.edu">Bugs/Comments</a>
+	</em>
+      </footer>
+    </div>
+  </body>
+</html>

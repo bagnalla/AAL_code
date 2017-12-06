@@ -1,0 +1,11 @@
+def f (i : int) : string {
+  x = "";
+  while i < 10 {
+    j = 20;
+    i = i + 1;
+    x = x + "a";
+  }
+  return x;
+}
+
+return f(0);

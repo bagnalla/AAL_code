@@ -1,0 +1,8 @@
+x = 0;
+a = create@int();
+while x < 10 {
+  insert(a, x, x);
+  x = x + 1;
+}
+insert(a, 0, 1000000);
+return a;

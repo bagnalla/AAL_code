@@ -1,0 +1,18 @@
+to_string for every type
+
+at : 'a array -> index -> 'a
+clear : 'a array -> unit
+insert : 'a array -> int -> 'a -> unit
+delete : 'a array -> int -> unit
+size : 'a array -> int
+concat : 'a array -> 'a array -> 'a array
+clone : 'a array -> 'a array
+copy : 'a array -> int -> int -> 'a array
+read : string -> 'a array
+
+derived functions
+
+push_front arr := insert arr 0
+push_back arr := insert arr (size arr)
+pop_front arr := delete arr 0
+pop_back arr := delete arr (size arr - 1)

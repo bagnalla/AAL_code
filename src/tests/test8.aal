@@ -1,0 +1,10 @@
+def f(X : T array, a : int) : bool {
+    return size(X) == a;
+}
+
+A = [0];
+b = f(A, 0);
+B = [b];
+clear(A);
+insert(B, 1, f(A, 0));
+return B;

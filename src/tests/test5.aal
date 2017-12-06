@@ -1,0 +1,46 @@
+def bubbleSort (A : T array &) : unit
+{
+    n = size(A);
+
+    while !(n == 0)
+    {
+        new_n = 0;
+        i = 1;
+
+        while (i < n)
+        {
+            if (A[i-1] > A[i])
+            {
+                swap(A, i-1, i);
+	        new_n = i;
+            }
+            else {
+	        return;
+	    }
+            i = i + 1;
+        }
+
+        n = new_n;
+    }
+}
+
+def f (A : T array) : T array
+{
+  bubbleSort(A);
+  return A;
+}
+
+def g (n : int) : int array
+{
+  i = 0;
+  A = create@int();
+  while (i < n) {
+    insert(A, 0, i);
+    i = i + 1;
+  }
+  A = f(A);
+  return A;
+}
+
+A = g(10);
+return A;

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example AAL Programs</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      .editor {
+      position: relative !important;
+      border: 1px solid lightgray;
+      margin: auto;
+      width: 520px;
+      }
+
+      body .ace_scrollbar {
+      display: none;
+      }
+
+      #content {
+      width: 750px;
+      text-align: left;
+      margin: auto;
+      }
+
+      #bubbleEditor {
+      height: 353px;
+      }
+
+      #insertionEditor {
+      height: 269px;
+      }
+
+      #mergeEditor {
+      height: 33px;
+      }
+
+      h3 { text-align: center; }
+      h4 { text-align: center; }
+
+      footer {
+      text-align: center;
+      margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+    <p>
+      <h3>Bubble Sort</h3>
+      <pre id="bubbleEditor" class="editor"></pre>
+    </p>
+    <p>
+      <h3>Insertion Sort</h3>
+      <pre id="insertionEditor" class="editor"></pre>
+    </p>
+    <p>
+      <h3>Merge Sort</h3>
+      <pre id="mergeEditor" class="editor"></pre>
+    </p>
+    <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      let bubbleEditor = ace.edit("bubbleEditor");
+      bubbleEditor.setTheme("ace/theme/iplastic");
+      bubbleEditor.session.setMode("ace/mode/javascript");
+      bubbleEditor.session.setUseWorker(false);
+      bubbleEditor.setReadOnly(true);
+      bubbleEditor.setOption("fontSize", 14);
+      bubbleEditor.setOption("tabSize", 2);
+      bubbleEditor.setValue("def bubbleSort (A : T array &) : unit {\n\
+  n = size(A);\n\
+  while n != 0 {\n\
+    new_n = 0;\n\
+    i = 1;\n\
+    while i < n {\n\
+      if A[i-1] > A[i] {\n\
+        swap(A, i-1, i);\n\
+        new_n = i;\n\
+      }\n\
+      else { return; }\n\
+      i = i + 1;\n\
+    }\n\
+    n = new_n;\n\
+  }\n\
+}\n\
+\n\
+A = [6, 4, 7, 2, 1, 67, 345, 12];\n\
+\n\
+bubbleSort(A);\n");
+	bubbleEditor.session.selection.clearSelection();
+
+	let insertionEditor = ace.edit("insertionEditor");
+	insertionEditor.setTheme("ace/theme/iplastic");
+	insertionEditor.session.setMode("ace/mode/javascript");
+	insertionEditor.session.setUseWorker(false);
+	insertionEditor.setReadOnly(true);
+	insertionEditor.setOption("fontSize", 14);
+	insertionEditor.setOption("tabSize", 2);
+	insertionEditor.setValue("def insertionSort (A : T array &) : unit {\n\
+  i = 1;\n\
+  while i < size(A) {\n\
+    j = i;\n\
+    while j > 0 && A[j-1] > A[j] {\n\
+      swap(A, j, j-1);\n\
+      j = j - 1;\n\
+    }\n\
+    i = i + 1;\n\
+  }\n\
+}\n\
+\n\
+A = [5, 3, 7, 5, 9, 1, 0, 0];\n\
+\n\
+insertionSort(A);\n");
+	  insertionEditor.session.selection.clearSelection();
+	  
+	  let mergeEditor = ace.edit("mergeEditor");
+	  mergeEditor.setTheme("ace/theme/iplastic");
+	  mergeEditor.session.setMode("ace/mode/javascript");
+	  mergeEditor.session.setUseWorker(false);
+	  mergeEditor.setReadOnly(true);
+	  mergeEditor.setOption("fontSize", 14);
+	  mergeEditor.setOption("tabSize", 2);
+	  mergeEditor.setValue("todo\n");
+	  mergeEditor.session.selection.clearSelection();
+    </script>
+    </div>
+  </body>
+  <footer>
+    <em>
+      <a href="index.html">Home</a>
+      - <a href="about.html">About AAL</a>
+      - <a href="mailto:ab667712@ohio.edu">Bugs/Comments</a>
+    </em>
+  </footer>
+</html>

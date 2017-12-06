@@ -1,0 +1,15 @@
+install node packages locally or fix NODE_PATH so it points to the place
+where npm installs global packages
+
+TODO:
+
+make editor width scale with font size (at least the width it wants to be)
+
+allow dragging the middle separator left or right
+
+make the autoplay "finished" only when the all objects are done moving
+(so they don't become slow at the end)
+
+allow global translation in addition to scale
+
+make canvas scrolling account for scale

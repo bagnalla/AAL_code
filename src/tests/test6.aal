@@ -1,0 +1,4 @@
+def f(a : T, y : T) : T {
+    return a;
+}
+x = 0;

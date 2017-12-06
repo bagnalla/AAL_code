@@ -1,0 +1,32 @@
+def bubbleSort (A : T array &) : unit {
+  n = size(A);
+  while !(n == 0) {
+    new_n = 0;
+    i = 1;
+    while i < n {
+      if A[i-1] > A[i] {
+        swap(A, i-1, i);
+	new_n = i;
+      }
+      else {
+        return;
+      }
+      i = i + 1;
+    }
+    n = new_n;
+  }
+}
+
+def setTo10 (n : int &) : unit {
+  n = 10;
+}
+
+n = 0;
+setTo10(n);
+
+A = [5, 3, 6, 4, 7];
+bubbleSort(A);
+
+set(A, 0, n);
+
+return A;
