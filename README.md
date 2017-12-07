@@ -45,4 +45,6 @@ There are many existing resources for visualizing sorting algorithms, but AAL ca
 
 ## Disclaimer
 
-This code was written a while ago and was never really intended to be seen by anyone. I don't even remember how half of it works. View at your own peril.
+This code was written a while ago and was never really intended to be seen by anyone. The type inference is funny -- I didn't know about Hindley-Milner at the time.
+
+Also, there are bugs.
