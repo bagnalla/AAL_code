@@ -1,0 +1,86 @@
+// def merge (left : T array, right : T array) : T array {
+//   result = create@T();
+
+//   while size(left) > 0 && size(right) > 0 {
+//     if left[0] <= right[0] {
+//       insert(result, size(result), left[0]);
+//       delete(left, 0);
+//     }
+//     else {
+//       insert(result, size(result), right[0]);
+//       delete(right, 0);
+//     }
+//   }
+
+//   while size(left) > 0 {
+//     insert(result, size(result), left[0]);
+//     delete(left, 0);
+//   }
+//   while size(right) > 0 {
+//     insert(result, size(result), right[0]);
+//     delete(right, 0);
+//   }
+
+//   return result;
+// }
+
+// def mergeSort (A : T array) : T array {
+//   if size(A) <= 1 {
+//     return A;
+//   }
+  
+//   left = subarray(A, 0, size(A)/2);
+//   right = subarray(A, size(A)/2, size(A));
+
+//   left = mergeSort(left);
+//   right = mergeSort(right);
+
+//   return merge(left, right);
+// }
+
+def merge (left : int array, right : int array) : int array {
+  result = create@int();
+
+  while size(left) > 0 && size(right) > 0 {
+    if left[0] <= right[0] {
+      insert(result, size(result), left[0]);
+      delete(left, 0);
+    }
+    else {
+      insert(result, size(result), right[0]);
+      delete(right, 0);
+    }
+  }
+
+  while size(left) > 0 {
+    insert(result, size(result), left[0]);
+    delete(left, 0);
+  }
+  while size(right) > 0 {
+    insert(result, size(result), right[0]);
+    delete(right, 0);
+  }
+
+  return result;
+}
+
+def mergeSort (A : int array) : int array {
+  if size(A) <= 1 {
+    return A;
+  }
+  
+  left = subarray(A, 0, size(A)/2);
+  right = subarray(A, size(A)/2, size(A));
+
+  left = mergeSort(left);
+  right = mergeSort(right);
+
+  return merge(left, right);
+}
+
+
+A = [5, 3, 7, 5, 9, 1, 0, 0];
+
+B = mergeSort(A);
+
+return B;

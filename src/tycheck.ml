@@ -63,7 +63,7 @@ let is_intrinsic_id = function
   | Id i ->
      match i with
      | "at" | "set" | "swap" | "clear" | "insert" | "size"
-       | "concat" | "create" | "delete" -> true
+       | "concat" | "create" | "delete" | "subarray" -> true
      | _ -> false
 
 let instantiate_function fid t =
@@ -533,6 +533,7 @@ let add_intrinsics () =
              !delta;
   delta := Symtab.set (Id("clear")) ([TyArray TyT], TyUnit) !delta;
   delta := Symtab.set (Id("delete")) ([TyArray TyT; TyInt], TyUnit) !delta;
+  delta := Symtab.set (Id("subarray")) ([TyArray TyT; TyInt; TyInt], TyArray TyT) !delta;
   ()
 
 (** [tycheck_prog p]:
