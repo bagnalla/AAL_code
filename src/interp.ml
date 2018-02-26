@@ -391,7 +391,7 @@ let build_function_locals fundefs =
     fundefs
 
 let interp_prog (p : prog) : (value * anim_prog) =
-  reset_anim();
+  reset_anim ();
   (* Add functions to the function environment *)
   BatList.iter (fun f -> functions := Symtab.set f.nm f !functions)
                p.fundefs;

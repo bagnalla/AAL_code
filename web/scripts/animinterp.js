@@ -203,8 +203,9 @@ AnimInterpreter.prototype._insert = function(id, index, value) {
 };
 
 AnimInterpreter.prototype._delete = function(id, index) {
+    // console.log("delete");
     let vid = parseId(id);
-    let v = this._var_map(vid)[0];
+    let v = this._var_map[vid][0];
     let arr = v.getElement(); // assume it's an array
     arr.deleteAt(index);
 };

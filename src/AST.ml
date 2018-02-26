@@ -4,12 +4,12 @@ open BatFormat
 exception Internal_error of string
 
 type ty =
-| TyInt
-| TyBool
-| TyString
-| TyUnit
-| TyArray of ty
-| TyT
+  | TyInt
+  | TyBool
+  | TyString
+  | TyUnit
+  | TyArray of ty
+  | TyT
 
 let is_arith_ty (t : ty) = 
   match t with
@@ -34,7 +34,7 @@ let ty_of_array = function
   | _ -> raise (Internal_error "expected array type in ty_of_array")
 
 type id =
-| Id of string
+  | Id of string
 
 let string_of_id i = match i with Id s -> s
 
@@ -55,26 +55,26 @@ let mk_argid (ti : tid) (byref : bool) =
     by_ref = byref }
 
 type unop =
-| UMinus
-| UNot
+  | UMinus
+  | UNot
 
 let string_of_unop = function
   | UMinus -> "UMinus"
   | UNot -> "UNot"
 
 type binop =
-| BPlus
-| BMinus
-| BTimes
-| BDiv
-| BAnd
-| BOr
-| BLt
-| BGt
-| BLe
-| BGe
-| BEq
-| BNeq
+  | BPlus
+  | BMinus
+  | BTimes
+  | BDiv
+  | BAnd
+  | BOr
+  | BLt
+  | BGt
+  | BLe
+  | BGe
+  | BEq
+  | BNeq
 
 let string_of_binop = function
   | BPlus -> "BPlus"
