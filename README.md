@@ -42,9 +42,3 @@ Separate makefiles are included for the OCaml and JavaScript developments in src
 AAL is a simple imperative language with a few built-in facilities for working with arrays. An AAL program is compiled down to a sort of bytecode called AIS, which is then interpreted by an interactive JavaScript animation runtime built on HTML5 canvas.
 
 There are many existing resources for visualizing sorting algorithms, but AAL can be used to easily experiment with new algorithms and interactively step through their execution in a visual environment. It's also useful for illustrating the call stack (it even grows downward!).
-
-## Disclaimer
-
-This code was written a while ago and was never really intended to be seen by anyone. The type inference is funny -- I didn't know about Hindley-Milner at the time.
-
-Also, there are bugs.
