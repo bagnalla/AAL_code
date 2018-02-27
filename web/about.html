@@ -61,7 +61,7 @@
     <div id="content" align="center">
       <!-- <h1>About</h1> -->
       <br>
-      <strong>Array Animation Language</strong> (AAL) is a small, strongly-typed, imperative language designed for visualizing algorithms on array data structures.<br><br>
+      <strong>Array Animation Language</strong> (AAL) is a small, statically-typed, imperative programming language designed for visualizing algorithms on arrays.<br><br>
       AAL programs are compiled to a special instruction set that describes how to animate them.<br><br>
       Included in the online version:
       <ol>
@@ -74,7 +74,7 @@
       </p>
       <p>
 	<h3>Types</h3>
-	The set of types is given by the following inductive definition:<br><br>
+	The set of types is given by the following grammar:<br><br>
 	<div class="types">
 	t ::=<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;unit<br>
@@ -84,7 +84,7 @@
 	&nbsp;&nbsp;| t array
 	</div>
 	<br><br>
-	Integers are 32 bits. 'unit' is the type with only one value: 'tt' (similar to ML). Note that there is no 'char' type (only string).
+	Integers are 32 bits. <i>unit</i> is the singleton type with only one value: <i>tt</i>. Note that there is no <i>char</i> type -- only <i>string</i>.
       </p>
       <p>
 	<h3>Operators</h3>
@@ -111,7 +111,7 @@
 	The syntax is mostly C-like with a few exceptions:
 	<ul>
 	  <li>
-	    Function definitions begin with the 'def' keyword. Type annotations are in ML style, and are required (no type reconstruction/inference).
+	    Function definitions begin with the 'def' keyword. Type annotations are in ML style, and are required (no type inference).
 	  </li>
 	  <li>
 	    Currently, while loop bodies and branches of if/else statements must always be enclosed in curly braces.
@@ -135,7 +135,7 @@
       </p>
       <h4>Arrays</h4>
       <p class="indent">
-	Arrays are homogeneous. That is, all values in an array must have the same type. Arrays can, however, contain other arrays. Arrays be be created either with the array literal syntax (e.g., A = [a1, ..., an]) or with the built-in 'create' function. Creating an empty array using 'create' is the only situation in which explicit type parameter annotation is strictly necessary.
+	Arrays are homogeneous. That is, all values in an array must have the same type. Arrays can, however, contain other arrays. Arrays be be created either with the array literal syntax (e.g., A = [a1, ..., an]) or with the built-in <i>create</i> function. Creating an empty array using <i>create</i> is the only situation in which explicit type parameter annotation is strictly necessary.
       </p>
       <!-- <p class="indent"> -->
       <!-- 	Square bracket syntax (e.g., A[i]) can be used to read and write elements of an array. It is just syntactic sugar for calls to either 'at' or 'set', depending on the context. See  -->
@@ -150,17 +150,17 @@
       }
       </div>
       <p class="indent">
-	Functions with a return type other than 'unit' must terminate every control flow path with a return command. Explicitly returning the unit value 'tt' from functions with return type 'unit' is allowed, but not required. When a function is called as a standalone command (its return value is not being used) its return type must be 'unit'.
+	Functions with a return type other than <i>unit</i> must terminate every control flow path with a return command. Explicitly returning the unit value <i>tt</i> from functions with return type <i>unit</i> is allowed, but not required. When a function is called as a standalone command (its return value is not being used) its return type must be <i>unit</i>.
       </p>
       <p class="indent">
 	All functions may call themselves or other functions (mutually) recursively. 
       </p>
       <h4>Parametric Polymorphism</h4>
       <p class="indent">
-	The special type 'T' can be used in place of actual types in the formal parameters and return types of function definitions. This provides a limited form of parametric polymorphism (there can only be one type parameter per function definition). A polymorphic function will typecheck successfully if its polymorphic arguments are used in a way that is compatible with all types (the intrinsic functions listed below are polymorphic and thus compatible with all types).
+	The special type <i>T</i> can be used in place of actual types in the formal parameters and return types of function definitions. This provides a limited form of parametric polymorphism (there can only be one type parameter per function definition). A polymorphic function will typecheck successfully if its polymorphic arguments are used in a way that is compatible with all types (the intrinsic functions listed below are polymorphic and thus compatible with all types).
       </p>
       <p class="indent">
-	Usually, when a polymorphic function is called, the types of the arguments can be used to determine which type to instantiate T with. If there are no such arguments, then the actual type for T must be explicitly provided using the '@' syntax. See the 'create' intrinsic function below.
+	Usually, at the call site of a polymorphic function, the types of the arguments can be used to infer which type to instantiate <i>T</i> with. If there are no such arguments, then the actual type for <i>T</i> must be explicitly provided using the <i>@</i> syntax. See the <i>create</i> intrinsic function below.
       </p>
       <h4>Intrinsic Functions</h4>
       <p class="indent">
@@ -172,7 +172,7 @@
 	  {
 	  name: "create",
 	  inputnames: ["none"],
-	  inputtypes: ["n/a"],
+	  inputtypes: [""],
 	  output: "an empty array of type 'array T'",
 	  info: "Since this function takes no arguments, the type parameter T can't be inferred. Thus, it must be provided via an explicit annotation. e.g., an empty int array can be created with the expression 'create@int()'."
 	  },
@@ -251,73 +251,19 @@
 	  }
 	  
 	  markup += "</ul>"
-	    
+	  
 	  $(document).ready(function() {
-				$("#intrinsicfunctions").html(markup);
-				});
-	    
+	      $("#intrinsicfunctions").html(markup);
+	  });
+
 	</script>
-	<!-- <ul> -->
-	<!--   <li><strong>create</strong><br> -->
-	<!--     Parameters: none<br> -->
-	<!--     Returns: an empty array of type 'array T'<br><br> -->
-	<!--     Since this function takes no arguments, the type parameter T can't be inferred. Thus, it must be provided via an explicit annotation. e.g., an empty int array can be created with the expression 'create@int()'.</li><br> -->
-	<!--   <li><strong>at</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T, <em>i</em> : int<br> -->
-	<!--     Returns: the element of <em>A</em> at position <em>i</em>. -->
-	<!--   </li><br> -->
-	<!--   <li><strong>set</strong><br> -->
-
-	<!--     <table><tr><td>Input:</td><td><em>A</em> : array T</td><td> -->
-	<!-- 	  <em>i</em> : int</td><td><em>x</em> : T</td></tr></table> -->
-	<!--     <table><tr><td>Output:</td><td>tt : unit</td></tr></table><br> -->
-	<!--     Set the element of <em>A</em> at position <em>i</em> to the value <em>x</em>. -->
-
-	<!--     <\!-- Parameters: <em>A</em> : array T, <em>i</em> : int, <em>x</em> : T<br> -\-> -->
-	<!--     <\!-- Returns: tt : unit<br> -\-> -->
-	<!--     <\!-- Set the element of <em>A</em> at position <em>i</em> to the value <em>x</em>. -\-> -->
-		
-	<!--   </li><br> -->
-
-	<!--   <li><strong>insert</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T, <em>i</em> : int, <em>x</em> : T<br> -->
-	<!--     Returns: tt : unit<br> -->
-	<!--     Inserts the value <em>x</em> at position <em>i</em> in array <em>A</em>. -->
-	<!--   </li><br> -->
-	<!--   <li><strong>delete</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T, <em>i</em> : int<br> -->
-	<!--     Returns: tt : unit<br> -->
-	<!--     Deletes the element of <em>A</em> at position <em>i</em>. -->
-	<!--   </li><br> -->
-	<!--   <li><strong>size</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T<br> -->
-	<!--     Returns: the number of elements in <em>A</em> (int). -->
-	<!--   </li><br> -->
-	<!--   <li><strong>swap</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T, <em>i1</em> : int,  -->
-	<!--     <em>i2</em> : int<br> -->
-	<!--     Returns: tt : unit<br> -->
-	<!--     Swaps the elements of <em>A</em> at positions <em>i1</em> and -->
-	<!--     <em>i2</em> -->
-	<!--   </li><br> -->
-	<!--   <li><strong>concat</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T, <em>B</em> : array T<br> -->
-	<!--     Returns: a new array that contains the elements of <em>A</em> followed by the elements of <em>B</em>. -->
-	<!--   </li><br> -->
-	<!--   <li><strong>clear</strong><br> -->
-	<!--     Parameters: <em>A</em> : array T<br> -->
-	<!--     Returns: tt : unit<br> -->
-	<!--     Removes all elements from <em>A</em>. -->
-	<!--   </li> -->
-	<!-- </ul> -->
-      <!-- </p> -->
       <p>
 	<h3>Implementation</h3>
       <p class="indent">
-	The "compiler" is written entirely in <a href="https://ocaml.org/">OCaml</a> and uses OCamllex, Menhir, and Batteries. It's maybe a bit disingenuous to call it a compiler, since it's really just an AST interpreter that evaluates the program and produces animation step instructions as it goes. It's compiled to JavaScript using <a href="https://ocsigen.org/js_of_ocaml/">js_of_ocaml</a> and runs in an HTML5 Web Worker.
+	The "compiler" is written entirely in <a href="https://ocaml.org/">OCaml</a> and uses OCamllex, Menhir, and Batteries. It's maybe a bit disingenuous to call it a compiler, since it's really just an AST interpreter that evaluates the program and produces animation step instructions along the way. It's compiled to JavaScript using <a href="https://ocsigen.org/js_of_ocaml/">js_of_ocaml</a> and runs in an HTML5 Web Worker.
       </p>
       <p class="indent">
-	The code editor is <a href="https://ace.c9.io/">Ace</a>. The animation runtime is written in JavaScript using <a href="http://victorjs.org/">victor.js</a>, <a href="https://www.npmjs.com/package/sexp">sexp</a>, and a custom thin layer on top of HTML5 Canvas. <a href="http://getbootstrap.com/">Bootstrap</a> is used for CSS.
+	The code editor is <a href="https://ace.c9.io/">Ace</a>. The animation runtime is written in JavaScript using <a href="http://victorjs.org/">victor.js</a>, <a href="https://www.npmjs.com/package/sexp">sexp</a>, and a custom thin layer over HTML5 Canvas. <a href="http://getbootstrap.com/">Bootstrap</a> provides CSS.
       </p>
       </p>
     </div>

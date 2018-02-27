@@ -92,11 +92,12 @@ let sexp_of_anim_instr = function
   | IClear id -> List [Atom "IClear"; sexp_of_anim_id id]
 
 let sexp_of_anim_com = function
-  | CFrameBegin (lbl, lnum) -> List [Atom "CFrameBegin";
-                                     List [Atom lbl; Atom (string_of_int lnum)]]
+  | CFrameBegin (lbl, lnum) ->
+     List [Atom "CFrameBegin"; List [Atom lbl; Atom (string_of_int lnum)]]
   | CFrameEnd lnum -> List [Atom "CFrameEnd"; Atom (string_of_int lnum)]
   | CStep (instrs, lnum) ->
-     List [Atom "CStep"; List [List (map sexp_of_anim_instr instrs); Atom (string_of_int lnum)]]
+     List [Atom "CStep"; List [List (map sexp_of_anim_instr instrs);
+                               Atom (string_of_int lnum)]]
 
 let sexp_of_anim_prog = function
   | AProg (name, coms) ->
